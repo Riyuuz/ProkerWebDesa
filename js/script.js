@@ -332,27 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ---------- 14. CONTACT FORM (frontend only) ---------- */
-  const contactForm = document.getElementById('contact-form');
-  const formSuccess = document.getElementById('form-success');
 
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    if (!contactForm.checkValidity()) {
-      formSuccess.style.color = '#C0392B';
-      formSuccess.textContent = 'Mohon lengkapi semua kolom dengan benar.';
-      return;
-    }
-
-    formSuccess.style.color = '#1B8A4A';
-    formSuccess.textContent = 'Terima kasih! Pesan Anda telah berhasil dikirim (simulasi front-end).';
-    contactForm.reset();
-
-    setTimeout(function () {
-      formSuccess.textContent = '';
-    }, 5000);
-  });
 
   /* ---------- 15. SMOOTH SCROLL FOR ANCHOR LINKS ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
