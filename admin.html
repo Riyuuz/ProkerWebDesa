@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Portal | Dusun Klumutan CMS</title>
+<!-- Google Fonts & FontAwesome -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root {
+    --bg-dark: #0B1320;
+    --sidebar-bg: #0F1E33;
+    --card-bg: rgba(21, 38, 61, 0.7);
+    --accent: #E5A93B;
+    --accent-hover: #BF8726;
+    --electric-blue: #3B82F6;
+    --success: #10B981;
+    --danger: #EF4444;
+    --text-light: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border: rgba(148, 163, 184, 0.12);
+    --radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  /* ---------- LOGIN SCREEN ---------- */
+  .login-container {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, #15263d 0%, #080f1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: var(--transition);
+  }
+  .login-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05);
+  }
+  .login-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  .login-logo {
+    width: 64px;
+    height: 64px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 24px;
+    box-shadow: 0 0 20px rgba(229, 169, 59, 0.4);
+  }
+  .login-card h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .login-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+  }
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .input-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .input-control {
+    width: 100%;
+    background: rgba(8, 15, 26, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    transition: var(--transition);
+  }
+  .input-control:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(229, 169, 59, 0.15);
+  }
+  .login-btn {
+    width: 100%;
+    background: var(--accent);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(229, 169, 59, 0.2);
+  }
+  .login-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(229, 169, 59, 0.35);
+  }
+  .login-error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 16px;
+    display: none;
+  }
+
+  /* ---------- APP LAYOUT ---------- */
+  .app-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  /* --- SIDEBAR --- */
+  .sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .sidebar-header i {
+    color: var(--accent);
+    font-size: 1.4rem;
+  }
+  .sidebar-header h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.92rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .menu-item:hover, .menu-item.active {
+    color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  .menu-item.active {
+    border-left: 4px solid var(--accent);
+    border-radius: 4px 10px 10px 4px;
+    background-color: rgba(229, 169, 59, 0.08);
+    color: var(--accent);
+  }
+  .sidebar-footer {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--danger);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .logout-btn:hover {
+    opacity: 0.8;
+  }
+
+  /* --- MAIN CONTENT --- */
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Prevents flex items from overflowing */
+  }
+
+  /* --- HEADER --- */
+  .app-header {
+    background: rgba(15, 30, 51, 0.4);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-title h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .status-badge.loaded {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+  .action-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-blue {
+    background: var(--electric-blue);
+    color: var(--text-light);
+  }
+  .btn-blue:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+  }
+  .btn-green {
+    background: var(--success);
+    color: var(--text-light);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  }
+  .btn-green:hover:not(:disabled) {
+    background: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+  }
+  .btn-green:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* --- EDITOR PANELS --- */
+  .editor-wrapper {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
+  }
+  .editor-panel {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+  }
+  .editor-panel.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-header {
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .panel-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .panel-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* --- FORM STYLING --- */
+  .form-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+  .form-section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .form-grid.full {
+    grid-template-columns: 1fr;
+  }
+  .form-grid.half {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group.span-2 {
+    grid-column: span 2;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .form-group textarea.input-control {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* --- FILE PICKER FOR IMAGES --- */
+  .image-picker-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .image-preview {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(8, 15, 26, 0.5);
+    flex-shrink: 0;
+  }
+  .image-picker-inputs {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .file-input-btn {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed var(--text-muted);
+    color: var(--text-light);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .file-input-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+  }
+  .file-input-btn input[type="file"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* --- EMPTY STATE NOTICE --- */
+  .empty-state {
+    text-align: center;
+    padding: 80px 40px;
+    background: var(--card-bg);
+    border: 1px dashed var(--text-muted);
+    border-radius: var(--radius);
+    max-width: 600px;
+    margin: 40px auto 0;
+  }
+  .empty-state i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .empty-state h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .empty-state p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* --- CARD REPEATER (FOR DYNAMIC SECTIONS) --- */
+  .repeater-card {
+    background: rgba(8, 15, 26, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .repeater-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 10px;
+  }
+  .repeater-card-header strong {
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+
+  /* --- NOTIFICATIONS --- */
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--sidebar-bg);
+    border-left: 4px solid var(--accent);
+    color: var(--text-light);
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10001;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: var(--transition);
+  }
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .toast.toast-success { border-left-color: var(--success); }
+  .toast.toast-danger { border-left-color: var(--danger); }
+</style>
+</head>
+<body>
+
+  <!-- ---------- LOGIN CONTAINER ---------- -->
+  <div class="login-container" id="login-container">
+    <div class="login-card">
+      <div class="login-logo">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h2>Pamong Admin Portal</h2>
+      <p>Masukkan kredensial admin Dusun Klumutan</p>
+      
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="input-control" required placeholder="admin">
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="input-control" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="login-btn">Masuk ke Dashboard</button>
+        <div class="login-error" id="login-error">Username atau password salah!</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ---------- MAIN APP CONTAINER ---------- -->
+  <div class="app-container">
+    
+    <!-- --- SIDEBAR --- -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <i class="fa-solid fa-leaf"></i>
+        <h1>Klumutan CMS</h1>
+      </div>
+      
+      <nav class="menu-list">
+        <div class="menu-item active" onclick="switchPanel('dashboard', this)">
+          <i class="fa-solid fa-house"></i> Dashboard
+        </div>
+        <div class="menu-item disabled-menu" onclick="switchPanel('hero', this)">
+          <i class="fa-solid fa-pager"></i> Hero &amp; Visi Misi
+        </div>
+        <div class="menu-item disabled-menu" onclick="switchPanel('profil-dusun', this)">
+          <i class="fa-solid fa-circle-info"></i> Profil &amp; Sejarah
+        </div>
+        <div class="menu-item disabled-menu" onclick="switchPanel('wisata-umkm', this)">
+          <i class="fa-solid fa-store"></i> UMKM Lokal
+        </div>
+        <div class="menu-item disabled-menu" onclick="switchPanel('pamong-berita', this)">
+          <i class="fa-solid fa-users"></i> Pamong Dusun
+        </div>
+        <div class="menu-item disabled-menu" onclick="switchPanel('faq-peta', this)">
+          <i class="fa-solid fa-circle-question"></i> FAQ &amp; Peta
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="logout-btn" onclick="handleLogout()">
+          <i class="fa-solid fa-right-from-bracket"></i> Keluar Sesi
+        </div>
+      </div>
+    </aside>
+
+    <!-- --- MAIN CONTENT --- -->
+    <main class="main-content">
+      
+      <!-- --- HEADER --- -->
+      <header class="app-header">
+        <div class="header-title">
+          <h2>Dashboard CMS Administrasi</h2>
+        </div>
+        <div class="header-actions">
+          <div class="status-badge" id="status-badge">
+            <i class="fa-solid fa-circle-xmark"></i> index.html Belum Dimuat
+          </div>
+          <button class="action-btn btn-blue" onclick="loadIndexFile()">
+            <i class="fa-solid fa-file-import"></i> Buka index.html
+          </button>
+          <button class="action-btn btn-green" id="save-btn" disabled onclick="saveIndexFile()">
+            <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
+          </button>
+        </div>
+      </header>
+
+      <!-- --- EDITOR PANELS --- -->
+      <div class="editor-wrapper">
+        
+        <!-- DASHBOARD STATUS PANEL -->
+        <div class="editor-panel active" id="panel-dashboard">
+          <div class="panel-header">
+            <h3>Selamat Datang di Portal CMS</h3>
+            <p>Kelola konten website resmi Dusun Klumutan secara visual tanpa database server.</p>
+          </div>
+          
+          <div class="empty-state" id="load-file-notice">
+            <i class="fa-solid fa-file-lines"></i>
+            <h4>Hubungkan Berkas index.html</h4>
+            <p>
+              Untuk memulai pengeditan, silakan klik tombol di bawah untuk memilih file <strong>index.html</strong> lokal di komputer Anda. Menggunakan File System Access API, perubahan yang Anda buat dapat disimpan langsung ke file tersebut.
+            </p>
+            <button class="action-btn btn-blue" onclick="loadIndexFile()">
+              Hubungkan index.html Sekarang
+            </button>
+          </div>
+          
+          <div class="form-section" id="file-loaded-notice" style="display:none;">
+            <div class="form-section-title">Informasi File Terhubung</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nama Berkas</label>
+                <div style="font-weight: 700; color: var(--accent);">index.html</div>
+              </div>
+              <div class="form-group">
+                <label>Status Sinkronisasi</label>
+                <div style="color: var(--success); font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Siap Diedit &amp; Disimpan langsung</div>
+              </div>
+            </div>
+            <p style="margin-top:20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+              Berkas <code>index.html</code> Anda telah terbaca dengan baik. Silakan navigasikan tab di menu samping kiri untuk mengedit konten teks, memperbarui data numerik, mengganti kontak WhatsApp UMKM, atau mengunggah foto baru. Tekan tombol <strong>"Simpan Perubahan"</strong> di kanan atas untuk menulis data permanen ke file komputer Anda.
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO PANEL -->
+        <div class="editor-panel" id="panel-hero">
+          <div class="panel-header">
+            <h3>Hero &amp; Visi Misi</h3>
+            <p>Kelola banner beranda utama dan teks visi misi dusun.</p>
+          </div>
+          
+          <div class="form-section">
+            <div class="form-section-title">Bagian Banner Utama (Hero)</div>
+            <div class="form-grid">
+              <div class="form-group span-2">
+                <label for="hero-eyebrow">Teks Kecil Pembuka (Eyebrow)</label>
+                <input type="text" id="hero-eyebrow" class="input-control">
+              </div>
+              <div class="form-group">
+                <label for="hero-title">Judul Utama (Title)</label>
+                <input type="text" id="hero-title" class="input-control">
+              </div>
+              <div class="form-group">
+                <label for="hero-desc">Deskripsi Singkat</label>
+                <textarea id="hero-desc" class="input-control"></textarea>
+              </div>
+              <div class="form-group span-2">
+                <label>Gambar Latar Belakang (Hero Background)</label>
+                <div class="image-picker-wrapper">
+                  <div class="image-preview" id="preview-hero-bg"></div>
+                  <div class="image-picker-inputs">
+                    <input type="text" id="hero-bg-src" class="input-control" placeholder="Masukkan URL Gambar atau File Path">
+                    <div class="file-input-btn">
+                      <i class="fa-solid fa-upload"></i> Unggah Gambar Baru (Embed Base64)
+                      <input type="file" accept="image/*" onchange="handleImageUpload(this, 'hero-bg-src', 'preview-hero-bg')">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Visi &amp; Misi Dusun</div>
+            <div class="form-grid">
+              <div class="form-group span-2">
+                <label for="about-title">Judul Tentang Kami</label>
+                <input type="text" id="about-title" class="input-control">
+              </div>
+              <div class="form-group">
+                <label for="about-p1">Paragraf Selayang Pandang 1</label>
+                <textarea id="about-p1" class="input-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="about-p2">Paragraf Selayang Pandang 2</label>
+                <textarea id="about-p2" class="input-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="visi-text">Pernyataan Visi</label>
+                <textarea id="visi-text" class="input-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="misi-text">Pernyataan Misi</label>
+                <textarea id="misi-text" class="input-control"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFIL & SEJARAH PANEL -->
+        <div class="editor-panel" id="panel-profil-dusun">
+          <div class="panel-header">
+            <h3>Profil &amp; Sejarah Dusun</h3>
+            <p>Kelola data demografis serta garis waktu sejarah perkembangan Dusun Klumutan.</p>
+          </div>
+          
+          <div class="form-section">
+            <div class="form-section-title">Data Profil Administratif</div>
+            <div class="form-grid" id="profile-cards-inputs">
+              <!-- Dynamically populated profile card input fields -->
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Garis Waktu Sejarah Dusun</div>
+            <div id="timeline-repeater">
+              <!-- Dynamically populated timeline items -->
+            </div>
+          </div>
+        </div>
+
+        <!-- UMKM PANEL -->
+        <div class="editor-panel" id="panel-wisata-umkm">
+          <div class="panel-header">
+            <h3>UMKM Lokal</h3>
+            <p>Kelola produk-produk unggulan warga dan pelaku usaha dusun.</p>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Daftar Produk UMKM Warga (4 Produk)</div>
+            <div id="umkm-cards-inputs">
+              <!-- Dynamically populated UMKM inputs -->
+            </div>
+          </div>
+        </div>
+
+        <!-- PAMONG PANEL -->
+        <div class="editor-panel" id="panel-pamong-berita">
+          <div class="panel-header">
+            <h3>Pamong Dusun</h3>
+            <p>Kelola foto dan informasi kepengurusan pamong Dusun Klumutan.</p>
+          </div>
+          
+          <div class="form-section">
+            <div class="form-section-title">Jajaran Pamong Dusun (Struktur Organisasi)</div>
+            <div id="org-cards-inputs">
+              <!-- Dynamically populated pamong inputs -->
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ & PETA PANEL -->
+        <div class="editor-panel" id="panel-faq-peta">
+          <div class="panel-header">
+            <h3>FAQ &amp; Peta Lokasi</h3>
+            <p>Kelola daftar pertanyaan umum warga/wisatawan dan iframe koordinat Google Maps.</p>
+          </div>
+          
+          <div class="form-section">
+            <div class="form-section-title">Pertanyaan Umum (FAQ - 4 Item)</div>
+            <div id="faq-items-inputs">
+              <!-- Dynamically populated faq inputs -->
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Integrasi Google Maps</div>
+            <div class="form-grid full">
+              <div class="form-group">
+                <label for="map-src">Iframe Embed URL (Google Maps)</label>
+                <textarea id="map-src" class="input-control"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ---------- TOAST NOTIFICATIONS ---------- -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check" id="toast-icon"></i>
+    <span id="toast-msg">Perubahan berhasil disimpan!</span>
+  </div>
+
+  <!-- ---------- APPLICATION LOGIC ---------- -->
+  <script>
+    // Simple Admin Gatekeeping (Hardcoded for local security context)
+    function handleLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      const err = document.getElementById('login-error');
+
+      if (u === 'admin' && p === 'admin') {
+        document.getElementById('login-container').classList.add('fade-out');
+        showToast('Login berhasil! Silakan hubungkan file index.html.', 'success');
+      } else {
+        err.style.display = 'block';
+      }
+    }
+
+    function handleLogout() {
+      document.getElementById('login-container').classList.remove('fade-out');
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('login-error').style.display = 'none';
+    }
+
+    // Switch Panel
+    function switchPanel(panelId, element) {
+      if (element.classList.contains('disabled-menu')) {
+        showToast('Buka file index.html terlebih dahulu untuk mengaktifkan menu ini!', 'danger');
+        return;
+      }
+      
+      // Update sidebar active state
+      document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+
+      // Update panel visibility
+      document.querySelectorAll('.editor-panel').forEach(panel => panel.classList.remove('active'));
+      document.getElementById('panel-' + panelId).classList.add('active');
+    }
+
+    // Show Toast Notification
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('toast');
+      const icon = document.getElementById('toast-icon');
+      const text = document.getElementById('toast-msg');
+
+      text.textContent = msg;
+      toast.className = 'toast show';
+      
+      if (type === 'success') {
+        toast.classList.add('toast-success');
+        icon.className = 'fa-solid fa-circle-check';
+      } else {
+        toast.classList.add('toast-danger');
+        icon.className = 'fa-solid fa-triangle-exclamation';
+      }
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    // Image Upload handler (Base64 conversion)
+    function handleImageUpload(inputEl, srcInputId, previewId) {
+      const file = inputEl.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Src = e.target.result;
+        document.getElementById(srcInputId).value = base64Src;
+        document.getElementById(previewId).style.backgroundImage = `url(${base64Src})`;
+        showToast('Gambar berhasil dimuat! Tekan simpan nanti untuk menyimpan permanen.', 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // File Access Handler
+    let fileHandle = null;
+    let indexDocument = null; // Parsed HTML document
+
+    async function loadIndexFile() {
+      try {
+        // Feature check: File System Access API
+        if ('showOpenFilePicker' in window) {
+          [fileHandle] = await window.showOpenFilePicker({
+            types: [{
+              description: 'HTML File',
+              accept: { 'text/html': ['.html'] }
+            }],
+            excludeAcceptAllOption: true,
+            multiple: false
+          });
+          const file = await fileHandle.getFile();
+          const contents = await file.text();
+          parseAndLoadHTML(contents);
+          showToast('Berkas index.html terhubung dengan sukses!', 'success');
+        } else {
+          // Fallback input method if browser blocks API
+          const input = document.createElement('input');
+          input.type = 'file';
+          input.accept = '.html';
+          input.onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const contents = await file.text();
+            parseAndLoadHTML(contents);
+            showToast('Berkas index.html berhasil dimuat (Mode Fallback)!', 'success');
+          };
+          input.click();
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Batal memuat berkas atau terjadi kesalahan sistem.', 'danger');
+      }
+    }
+
+    function parseAndLoadHTML(htmlString) {
+      const parser = new DOMParser();
+      indexDocument = parser.parseFromString(htmlString, 'text/html');
+
+      // Update UI Status
+      const statusBadge = document.getElementById('status-badge');
+      statusBadge.className = 'status-badge loaded';
+      statusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> index.html Terhubung';
+      document.getElementById('save-btn').removeAttribute('disabled');
+      document.getElementById('load-file-notice').style.display = 'none';
+      document.getElementById('file-loaded-notice').style.display = 'block';
+
+      // Enable Sidebar menus
+      document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('disabled-menu'));
+
+      // POPULATE ALL DATA FIELDS
+      populateHeroAndVisi();
+      populateProfileCards();
+      populateTimeline();
+      populateUMKM();
+      populatePamong();
+      populateFAQ();
+      populateMap();
+    }
+
+    // --- POPULATE & MAP HELPERS ---
+
+    function populateHeroAndVisi() {
+      const eyebrow = indexDocument.querySelector('.hero-eyebrow');
+      const title = indexDocument.querySelector('.hero-title');
+      const desc = indexDocument.querySelector('.hero-desc');
+      const bgImg = indexDocument.querySelector('.hero-bg img');
+
+      if (eyebrow) document.getElementById('hero-eyebrow').value = eyebrow.textContent.trim();
+      if (title) document.getElementById('hero-title').value = title.innerHTML.trim();
+      if (desc) document.getElementById('hero-desc').value = desc.textContent.trim();
+      if (bgImg) {
+        document.getElementById('hero-bg-src').value = bgImg.getAttribute('src');
+        document.getElementById('preview-hero-bg').style.backgroundImage = `url(${bgImg.getAttribute('src')})`;
+      }
+
+      // Visi & Misi
+      const aboutTitle = indexDocument.querySelector('#tentang .section-title');
+      const p1 = indexDocument.querySelector('#tentang .about-text p:nth-of-type(1)');
+      const p2 = indexDocument.querySelector('#tentang .about-text p:nth-of-type(2)');
+      const visi = indexDocument.querySelector('#tentang .about-card:nth-of-type(1) p');
+      const misi = indexDocument.querySelector('#tentang .about-card:nth-of-type(2) p');
+
+      if (aboutTitle) document.getElementById('about-title').value = aboutTitle.textContent.trim();
+      if (p1) document.getElementById('about-p1').value = p1.textContent.trim();
+      if (p2) document.getElementById('about-p2').value = p2.textContent.trim();
+      if (visi) document.getElementById('visi-text').value = visi.textContent.trim();
+      if (misi) document.getElementById('misi-text').value = misi.textContent.trim();
+    }
+
+    function populateProfileCards() {
+      const cards = indexDocument.querySelectorAll('#profil .profile-card');
+      const wrapper = document.getElementById('profile-cards-inputs');
+      wrapper.innerHTML = ''; // reset
+
+      cards.forEach((card, idx) => {
+        const title = card.querySelector('h4').textContent.trim();
+        const mainVal = card.querySelector('p').childNodes[0].textContent.trim();
+        const subVal = card.querySelector('p span') ? card.querySelector('p span').textContent.trim() : '';
+
+        const formGroup = document.createElement('div');
+        formGroup.className = 'repeater-card form-group span-2';
+        formGroup.innerHTML = `
+          <div class="repeater-card-header">
+            <strong>Kartu Profil ${idx + 1}: ${title}</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Judul Kartu</label>
+              <input type="text" class="input-control profile-title-input" data-index="${idx}" value="${title}">
+            </div>
+            <div class="form-group">
+              <label>Nilai Utama</label>
+              <input type="text" class="input-control profile-main-input" data-index="${idx}" value="${mainVal}">
+            </div>
+            <div class="form-group span-2">
+              <label>Keterangan Sub (Kecil)</label>
+              <input type="text" class="input-control profile-sub-input" data-index="${idx}" value="${subVal}">
+            </div>
+          </div>
+        `;
+        wrapper.appendChild(formGroup);
+      });
+    }
+
+    function populateTimeline() {
+      const items = indexDocument.querySelectorAll('.timeline-item');
+      const wrapper = document.getElementById('timeline-repeater');
+      wrapper.innerHTML = '';
+
+      items.forEach((item, idx) => {
+        const year = item.querySelector('.timeline-year').textContent.trim();
+        const title = item.querySelector('h4').textContent.trim();
+        const desc = item.querySelector('p').textContent.trim();
+
+        const card = document.createElement('div');
+        card.className = 'repeater-card';
+        card.innerHTML = `
+          <div class="repeater-card-header">
+            <strong>Garis Waktu Sejarah ${idx + 1}</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Tahun</label>
+              <input type="text" class="input-control timeline-year-input" data-index="${idx}" value="${year}">
+            </div>
+            <div class="form-group">
+              <label>Peristiwa Utama</label>
+              <input type="text" class="input-control timeline-title-input" data-index="${idx}" value="${title}">
+            </div>
+            <div class="form-group span-2">
+              <label>Keterangan Deskripsi</label>
+              <textarea class="input-control timeline-desc-input" data-index="${idx}">${desc}</textarea>
+            </div>
+          </div>
+        `;
+        wrapper.appendChild(card);
+      });
+    }
+
+
+
+    function populateUMKM() {
+      const cards = indexDocument.querySelectorAll('#umkm .umkm-card');
+      const wrapper = document.getElementById('umkm-cards-inputs');
+      wrapper.innerHTML = '';
+
+      cards.forEach((card, idx) => {
+        const img = card.querySelector('img').getAttribute('src');
+        const category = card.querySelector('.umkm-category').textContent.trim();
+        const title = card.querySelector('h4').textContent.trim();
+        const desc = card.querySelector('p').textContent.trim();
+        const contact = card.querySelector('.umkm-contact').textContent.replace(/^\s*\+?\s*/, '').replace(/WhatsApp|Hubungi|Hub|:\s*/gi, '').trim();
+
+        const element = document.createElement('div');
+        element.className = 'repeater-card';
+        element.innerHTML = `
+          <div class="repeater-card-header">
+            <strong>Produk UMKM ${idx + 1}: ${title}</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Kategori Produk</label>
+              <input type="text" class="input-control umkm-cat-input" data-index="${idx}" value="${category}">
+            </div>
+            <div class="form-group">
+              <label>Nama Produk / UMKM</label>
+              <input type="text" class="input-control umkm-title-input" data-index="${idx}" value="${title}">
+            </div>
+            <div class="form-group">
+              <label>Keterangan WhatsApp (Nomor Hp)</label>
+              <input type="text" class="input-control umkm-contact-input" data-index="${idx}" value="${contact}">
+            </div>
+            <div class="form-group">
+              <label>Deskripsi Ringkas</label>
+              <textarea class="input-control umkm-desc-input" data-index="${idx}">${desc}</textarea>
+            </div>
+            <div class="form-group span-2">
+              <label>Gambar Produk</label>
+              <div class="image-picker-wrapper">
+                <div class="image-preview" id="preview-umkm-${idx}" style="background-image: url(${img});"></div>
+                <div class="image-picker-inputs">
+                  <input type="text" id="umkm-src-${idx}" class="input-control umkm-img-input" data-index="${idx}" value="${img}">
+                  <div class="file-input-btn">
+                    <i class="fa-solid fa-upload"></i> Unggah Gambar (Embed Base64)
+                    <input type="file" accept="image/*" onchange="handleImageUpload(this, 'umkm-src-${idx}', 'preview-umkm-${idx}')">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        wrapper.appendChild(element);
+      });
+    }
+
+    function populatePamong() {
+      const cards = indexDocument.querySelectorAll('.org-card');
+      const wrapper = document.getElementById('org-cards-inputs');
+      wrapper.innerHTML = '';
+
+      cards.forEach((card, idx) => {
+        const img = card.querySelector('img').getAttribute('src');
+        const name = card.querySelector('h4').textContent.trim();
+        const role = card.querySelector('p').textContent.trim();
+
+        const element = document.createElement('div');
+        element.className = 'repeater-card';
+        element.innerHTML = `
+          <div class="repeater-card-header">
+            <strong>Pamong ${idx + 1}: ${name}</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" class="input-control org-name-input" data-index="${idx}" value="${name}">
+            </div>
+            <div class="form-group">
+              <label>Jabatan</label>
+              <input type="text" class="input-control org-role-input" data-index="${idx}" value="${role}">
+            </div>
+            <div class="form-group span-2">
+              <label>Foto Profil Pamong</label>
+              <div class="image-picker-wrapper">
+                <div class="image-preview" id="preview-org-${idx}" style="background-image: url(${img});"></div>
+                <div class="image-picker-inputs">
+                  <input type="text" id="org-src-${idx}" class="input-control org-img-input" data-index="${idx}" value="${img}">
+                  <div class="file-input-btn">
+                    <i class="fa-solid fa-upload"></i> Unggah Gambar (Embed Base64)
+                    <input type="file" accept="image/*" onchange="handleImageUpload(this, 'org-src-${idx}', 'preview-org-${idx}')">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        wrapper.appendChild(element);
+      });
+    }
+
+
+
+    function populateFAQ() {
+      const items = indexDocument.querySelectorAll('.faq-item');
+      const wrapper = document.getElementById('faq-items-inputs');
+      wrapper.innerHTML = '';
+
+      items.forEach((item, idx) => {
+        const question = item.querySelector('.faq-question span').textContent.trim();
+        const answer = item.querySelector('.faq-answer p').textContent.trim();
+
+        const element = document.createElement('div');
+        element.className = 'repeater-card';
+        element.innerHTML = `
+          <div class="repeater-card-header">
+            <strong>Pertanyaan FAQ ${idx + 1}</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group span-2">
+              <label>Pertanyaan</label>
+              <input type="text" class="input-control faq-question-input" data-index="${idx}" value="${question}">
+            </div>
+            <div class="form-group span-2">
+              <label>Jawaban</label>
+              <textarea class="input-control faq-answer-input" data-index="${idx}">${answer}</textarea>
+            </div>
+          </div>
+        `;
+        wrapper.appendChild(element);
+      });
+    }
+
+    function populateMap() {
+      const iframe = indexDocument.querySelector('.map-wrapper iframe');
+      if (iframe) {
+        document.getElementById('map-src').value = iframe.getAttribute('src');
+      }
+    }
+
+    // --- SAVE & CONVERT BACK TO FILE ---
+
+    async function saveIndexFile() {
+      if (!indexDocument) return;
+
+      try {
+        // 1. Gather all data from inputs and update the virtual DOM (indexDocument)
+
+        // Hero & Visi Misi
+        const eyebrow = indexDocument.querySelector('.hero-eyebrow');
+        const title = indexDocument.querySelector('.hero-title');
+        const desc = indexDocument.querySelector('.hero-desc');
+        const bgImg = indexDocument.querySelector('.hero-bg img');
+
+        if (eyebrow) eyebrow.textContent = document.getElementById('hero-eyebrow').value;
+        if (title) title.innerHTML = document.getElementById('hero-title').value;
+        if (desc) desc.textContent = document.getElementById('hero-desc').value;
+        if (bgImg) bgImg.setAttribute('src', document.getElementById('hero-bg-src').value);
+
+        // Visi & Misi Section
+        const aboutTitle = indexDocument.querySelector('#tentang .section-title');
+        const p1 = indexDocument.querySelector('#tentang .about-text p:nth-of-type(1)');
+        const p2 = indexDocument.querySelector('#tentang .about-text p:nth-of-type(2)');
+        const visi = indexDocument.querySelector('#tentang .about-card:nth-of-type(1) p');
+        const misi = indexDocument.querySelector('#tentang .about-card:nth-of-type(2) p');
+
+        if (aboutTitle) aboutTitle.textContent = document.getElementById('about-title').value;
+        if (p1) p1.textContent = document.getElementById('about-p1').value;
+        if (p2) p2.textContent = document.getElementById('about-p2').value;
+        if (visi) visi.textContent = document.getElementById('visi-text').value;
+        if (misi) misi.textContent = document.getElementById('misi-text').value;
+
+        // Profile Cards
+        const pCards = indexDocument.querySelectorAll('#profil .profile-card');
+        document.querySelectorAll('.profile-title-input').forEach(input => {
+          const idx = parseInt(input.dataset.index);
+          const title = input.value;
+          const mainVal = document.querySelector(`.profile-main-input[data-index="${idx}"]`).value;
+          const subVal = document.querySelector(`.profile-sub-input[data-index="${idx}"]`).value;
+
+          const card = pCards[idx];
+          if (card) {
+            card.querySelector('h4').textContent = title;
+            const p = card.querySelector('p');
+            // Re-render paragraph nodes safely
+            p.innerHTML = `${mainVal} <span>${subVal}</span>`;
+          }
+        });
+
+        // Timeline
+        const tItems = indexDocument.querySelectorAll('.timeline-item');
+        document.querySelectorAll('.timeline-year-input').forEach(input => {
+          const idx = parseInt(input.dataset.index);
+          const year = input.value;
+          const title = document.querySelector(`.timeline-title-input[data-index="${idx}"]`).value;
+          const desc = document.querySelector(`.timeline-desc-input[data-index="${idx}"]`).value;
+
+          const item = tItems[idx];
+          if (item) {
+            item.querySelector('.timeline-year').textContent = year;
+            item.querySelector('h4').textContent = title;
+            item.querySelector('p').textContent = desc;
+          }
+        });
+
+
+
+        // UMKM
+        const umkmCards = indexDocument.querySelectorAll('#umkm .umkm-card');
+        document.querySelectorAll('.umkm-title-input').forEach(input => {
+          const idx = parseInt(input.dataset.index);
+          const title = input.value;
+          const category = document.querySelector(`.umkm-cat-input[data-index="${idx}"]`).value;
+          const desc = document.querySelector(`.umkm-desc-input[data-index="${idx}"]`).value;
+          const contact = document.querySelector(`.umkm-contact-input[data-index="${idx}"]`).value;
+          const img = document.querySelector(`.umkm-img-input[data-index="${idx}"]`).value;
+
+          const card = umkmCards[idx];
+          if (card) {
+            card.querySelector('h4').textContent = title;
+            card.querySelector('.umkm-category').textContent = category;
+            card.querySelector('p').textContent = desc;
+            card.querySelector('img').setAttribute('src', img);
+            
+            const contactEl = card.querySelector('.umkm-contact');
+            contactEl.innerHTML = `<i class="fa-brands fa-whatsapp"></i> ${contact}`;
+          }
+        });
+
+        // Pamong (Struktur Organisasi)
+        const orgCards = indexDocument.querySelectorAll('.org-card');
+        document.querySelectorAll('.org-name-input').forEach(input => {
+          const idx = parseInt(input.dataset.index);
+          const name = input.value;
+          const role = document.querySelector(`.org-role-input[data-index="${idx}"]`).value;
+          const img = document.querySelector(`.org-img-input[data-index="${idx}"]`).value;
+
+          const card = orgCards[idx];
+          if (card) {
+            card.querySelector('h4').textContent = name;
+            card.querySelector('p').textContent = role;
+            card.querySelector('img').setAttribute('src', img);
+          }
+        });
+
+
+
+        // FAQs
+        const faqItems = indexDocument.querySelectorAll('.faq-item');
+        document.querySelectorAll('.faq-question-input').forEach(input => {
+          const idx = parseInt(input.dataset.index);
+          const question = input.value;
+          const answer = document.querySelector(`.faq-answer-input[data-index="${idx}"]`).value;
+
+          const item = faqItems[idx];
+          if (item) {
+            item.querySelector('.faq-question span').textContent = question;
+            item.querySelector('.faq-answer p').textContent = answer;
+          }
+        });
+
+        // Map iframe
+        const mapIframe = indexDocument.querySelector('.map-wrapper iframe');
+        if (mapIframe) {
+          mapIframe.setAttribute('src', document.getElementById('map-src').value);
+        }
+
+        // 2. Serialize virtual DOM back to HTML string
+        const outputHTML = '<!DOCTYPE html>\n' + indexDocument.documentElement.outerHTML;
+
+        // 3. Save back to file using Handle API, or trigger fallback download
+        if (fileHandle) {
+          const writable = await fileHandle.createWritable();
+          await writable.write(outputHTML);
+          await writable.close();
+          showToast('Berkas index.html berhasil diperbarui secara permanen!', 'success');
+        } else {
+          // Fallback download if API not supported
+          const blob = new Blob([outputHTML], { type: 'text/html;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'index.html';
+          link.click();
+          URL.revokeObjectURL(url);
+          showToast('Berhasil mengunduh berkas index.html baru! Salin file ini untuk menimpa file lama.', 'success');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Gagal menyimpan file. Pastikan izin menulis diberikan.', 'danger');
+      }
+    }
+  </script>
+</body>
+</html>

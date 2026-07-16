@@ -77,12 +77,51 @@ document.addEventListener('DOMContentLoaded', function () {
     hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  // Close mobile menu when a link is clicked
-  document.querySelectorAll('.nav-link').forEach(function (link) {
+  // Close mobile menu when a link is clicked (excluding dropdown toggles)
+  document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(function (link) {
     link.addEventListener('click', function () {
       navbarNav.classList.remove('open');
       hamburgerBtn.classList.remove('open');
       hamburgerBtn.setAttribute('aria-expanded', 'false');
+
+      // Reset all mobile dropdown states when closing menu
+      document.querySelectorAll('.dropdown-parent').forEach(function (parent) {
+        parent.classList.remove('active');
+        const menu = parent.querySelector('.dropdown-menu');
+        if (menu) menu.style.height = null;
+      });
+    });
+  });
+
+  /* ---------- 5b. MOBILE DROPDOWN TOGGLES ---------- */
+  document.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        const menu = parent.querySelector('.dropdown-menu');
+
+        // Close other dropdowns (accordion style)
+        document.querySelectorAll('.dropdown-parent').forEach(function (otherParent) {
+          if (otherParent !== parent) {
+            otherParent.classList.remove('active');
+            const otherMenu = otherParent.querySelector('.dropdown-menu');
+            if (otherMenu) otherMenu.style.height = null;
+          }
+        });
+
+        // Toggle current dropdown
+        const isActive = parent.classList.toggle('active');
+        this.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+        if (menu) {
+          if (isActive) {
+            menu.style.height = menu.scrollHeight + 'px';
+          } else {
+            menu.style.height = '0px';
+          }
+        }
+      }
     });
   });
 
@@ -266,47 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'ArrowLeft') showPrevImage();
   });
 
-  /* ---------- 12. TESTIMONIAL SLIDER ---------- */
-  const testimonialTrack = document.getElementById('testimonial-track');
-  const testimonialCards = document.querySelectorAll('.testimonial-card');
-  const testimonialDotsWrap = document.getElementById('testimonial-dots');
-  let testimonialIndex = 0;
-  let testimonialAutoTimer = null;
 
-  testimonialCards.forEach(function (_, index) {
-    const dot = document.createElement('button');
-    dot.setAttribute('aria-label', 'Tampilkan testimoni ' + (index + 1));
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', function () {
-      goToTestimonial(index);
-      resetTestimonialAuto();
-    });
-    testimonialDotsWrap.appendChild(dot);
-  });
-
-  const testimonialDots = testimonialDotsWrap.querySelectorAll('button');
-
-  function goToTestimonial(index) {
-    testimonialIndex = index;
-    testimonialTrack.style.transform = 'translateX(-' + (index * 100) + '%)';
-    testimonialDots.forEach(function (dot, i) {
-      dot.classList.toggle('active', i === index);
-    });
-  }
-
-  function nextTestimonial() {
-    testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
-    goToTestimonial(testimonialIndex);
-  }
-
-  function resetTestimonialAuto() {
-    clearInterval(testimonialAutoTimer);
-    testimonialAutoTimer = setInterval(nextTestimonial, 6000);
-  }
-
-  if (testimonialCards.length > 0) {
-    resetTestimonialAuto();
-  }
 
   /* ---------- 13. FAQ ACCORDION ---------- */
   const faqItems = document.querySelectorAll('.faq-item');
@@ -351,5 +350,170 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- 16. FOOTER CURRENT YEAR ---------- */
   document.getElementById('current-year').textContent = new Date().getFullYear();
+
+
+
+  /* ---------- 17. GOOGLE MAPS INTERACTIVE WITH BOUNDARY ---------- */
+  const mapContainer = document.getElementById('map-3d');
+  if (mapContainer) {
+    const klumutanCoords = [110.2070, -7.8918];
+    
+    // GeoJSON Boundary polygon for Dusun Klumutan (aligned with the user's uploaded Google Maps image)
+    const klumutanBoundary = {
+      'type': 'Feature',
+      'geometry': {
+        'type': 'Polygon',
+        'coordinates': [[
+          [110.2073, -7.8891], // Top peak
+          [110.2088, -7.8898], // Right-top corner
+          [110.2088, -7.8908], // Right-middle indentation
+          [110.2093, -7.8914], // Right-middle bump
+          [110.2088, -7.8924], // Right-bottom indentation
+          [110.2098, -7.8930], // Right-bottom bump
+          [110.2098, -7.8938], // Bottom-right corner (Marmos)
+          [110.2080, -7.8945], // Bottom edge
+          [110.2065, -7.8940], // Bottom-left corner (sule erwe)
+          [110.2055, -7.8912], // Left-middle bump
+          [110.2062, -7.8896], // Top-left corner
+          [110.2073, -7.8891]  // Close polygon
+        ]]
+      }
+    };
+    
+    const map = new maplibregl.Map({
+      container: 'map-3d',
+      style: {
+        version: 8,
+        sources: {
+          'google-road': {
+            type: 'raster',
+            tiles: [
+              'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
+            ],
+            tileSize: 256,
+            attribution: '&copy; Google Maps'
+          },
+          'google-satellite': {
+            type: 'raster',
+            tiles: [
+              'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+            ],
+            tileSize: 256,
+            attribution: '&copy; Google Maps'
+          }
+        },
+        layers: [
+          {
+            id: 'road-layer',
+            type: 'raster',
+            source: 'google-road',
+            minzoom: 0,
+            maxzoom: 20,
+            layout: { 'visibility': 'visible' }
+          },
+          {
+            id: 'satellite-layer',
+            type: 'raster',
+            source: 'google-satellite',
+            minzoom: 0,
+            maxzoom: 20,
+            layout: { 'visibility': 'none' }
+          }
+        ]
+      },
+      center: klumutanCoords,
+      zoom: 15.5,
+      pitch: 0, // Flat 2D map just like default Google Maps
+      bearing: 0,
+      scrollZoom: false
+    });
+
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+
+    mapContainer.addEventListener('click', function () {
+      map.scrollZoom.enable();
+    });
+
+    map.on('load', function () {
+      // 1. Add Boundary GeoJSON Source
+      map.addSource('klumutan-boundary', {
+        'type': 'geojson',
+        'data': klumutanBoundary
+      });
+
+      // 2. Add soft red fill layer for boundary
+      map.addLayer({
+        'id': 'boundary-fill',
+        'type': 'fill',
+        'source': 'klumutan-boundary',
+        'layout': {},
+        'paint': {
+          'fill-color': '#EF4444',
+          'fill-opacity': 0.04
+        }
+      });
+
+      // 3. Add glowing red outer line layer
+      map.addLayer({
+        'id': 'boundary-glow',
+        'type': 'line',
+        'source': 'klumutan-boundary',
+        'layout': {},
+        'paint': {
+          'line-color': '#EF4444',
+          'line-width': 5,
+          'line-blur': 3,
+          'line-opacity': 0.25
+        }
+      });
+
+      // 4. Add sharp dashed red line layer (looks exactly like Google Maps boundary!)
+      map.addLayer({
+        'id': 'boundary-line',
+        'type': 'line',
+        'source': 'klumutan-boundary',
+        'layout': {},
+        'paint': {
+          'line-color': '#EF4444',
+          'line-width': 2.5,
+          'line-dasharray': [3, 3]
+        }
+      });
+
+
+    });
+
+    // Create Controls Overlay Container
+    const controlsContainer = document.createElement('div');
+    controlsContainer.className = 'map-controls-overlay';
+
+    // Map Mode Switcher Button
+    const modeBtn = document.createElement('button');
+    modeBtn.className = 'map-mode-toggle';
+    modeBtn.innerHTML = '<i class="fa-solid fa-earth-asia"></i> Mode Satelit';
+    
+    let currentMode = 'road';
+    modeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (currentMode === 'road') {
+        // Switch to satellite mode
+        map.setLayoutProperty('road-layer', 'visibility', 'none');
+        map.setLayoutProperty('satellite-layer', 'visibility', 'visible');
+        modeBtn.innerHTML = '<i class="fa-solid fa-map"></i> Mode Default';
+        modeBtn.classList.add('active-street');
+        currentMode = 'satellite';
+      } else {
+        // Switch to road mode
+        map.setLayoutProperty('road-layer', 'visibility', 'visible');
+        map.setLayoutProperty('satellite-layer', 'visibility', 'none');
+        modeBtn.innerHTML = '<i class="fa-solid fa-earth-asia"></i> Mode Satelit';
+        modeBtn.classList.remove('active-street');
+        currentMode = 'road';
+      }
+    });
+
+    controlsContainer.appendChild(modeBtn);
+    mapContainer.appendChild(controlsContainer);
+  }
 
 });

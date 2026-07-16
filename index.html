@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
+<html lang="id"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== SEO META TAGS ===== -->
-<title>Dusun Klumutan | Desa Srikayangan, Sentolo, Kulon Progo - DIY</title>
-<meta name="description" content="Portal resmi informasi Dusun Klumutan, Kalurahan Srikayangan, Kapanewon Sentolo, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta. Jelajahi sejarah, potensi, wisata, dan UMKM desa kami.">
-<meta name="keywords" content="Klumutan, Srikayangan, Sentolo, Kulon Progo, Yogyakarta, desa wisata, KKN, profil desa">
+<title>Dusun Klumutan | Kalurahan Srikayangan, Sentolo, Kulon Progo - DIY</title>
+<meta name="description" content="Portal resmi informasi Dusun Klumutan, Kalurahan Srikayangan, Kapanewon Sentolo, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta. Jelajahi sejarah, potensi pertanian bawang merah, wisata agrowisata, dan UMKM desa kami.">
+<meta name="keywords" content="Klumutan, Srikayangan, Sentolo, Kulon Progo, Yogyakarta, bawang merah Srikayang, desa wisata Kulon Progo, agrowisata Kulon Progo, profil dusun">
 <meta name="author" content="Pemerintah Dusun Klumutan">
-<link rel="canonical" href="https://example-klumutan.id/">
+<link rel="canonical" href="https://klumutan-srikayangan.id/">
 
 <!-- ===== OPEN GRAPH ===== -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dusun Klumutan | Srikayangan, Sentolo, Kulon Progo">
-<meta property="og:description" content="Portal resmi informasi Dusun Klumutan - sejarah, potensi, wisata, dan UMKM desa.">
-<meta property="og:image" content="https://example-klumutan.id/assets/og-image.jpg">
-<meta property="og:url" content="https://example-klumutan.id/">
+<meta property="og:description" content="Portal resmi informasi Dusun Klumutan - pusat agrowisata bawang merah, potensi unggulan, sejarah, dan kegiatan warga.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80">
+<meta property="og:url" content="https://klumutan-srikayangan.id/">
 <meta property="og:locale" content="id_ID">
 
 <!-- ===== TWITTER CARD ===== -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dusun Klumutan | Srikayangan, Sentolo, Kulon Progo">
-<meta name="twitter:description" content="Portal resmi informasi Dusun Klumutan - sejarah, potensi, wisata, dan UMKM desa.">
-<meta name="twitter:image" content="https://example-klumutan.id/assets/og-image.jpg">
+<meta name="twitter:description" content="Portal resmi informasi Dusun Klumutan - sejarah, potensi pertanian bawang merah, dan pariwisata lokal.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80">
 
-<!-- ===== FAVICON (placeholder) ===== -->
+<!-- ===== FAVICON ===== -->
 <link rel="icon" type="image/png" href="assets/favicon.png">
 
 <!-- ===== FONTS & ICONS ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- ===== MAPLIBRE GL JS ===== -->
+<link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 
 <!-- ===== STYLES ===== -->
 <link rel="stylesheet" href="css/style.css">
@@ -42,7 +45,7 @@
 {
   "@context": "https://schema.org",
   "@type": "GovernmentOrganization",
-  "name": "Dusun Klumutan",
+  "name": "Pemerintah Dusun Klumutan",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Dusun Klumutan",
@@ -50,8 +53,7 @@
     "addressRegion": "Kulon Progo, Daerah Istimewa Yogyakarta",
     "addressCountry": "ID"
   },
-  "url": "https://example-klumutan.id/",
-  "logo": "https://example-klumutan.id/assets/logo.png"
+  "url": "https://klumutan-srikayangan.id/"
 }
 </script>
 </head>
@@ -88,15 +90,31 @@
     <nav class="navbar-nav" id="navbar-nav" aria-label="Navigasi utama">
       <ul>
         <li><a href="#home" class="nav-link active-link" data-section="home">Home</a></li>
-        <li><a href="#tentang" class="nav-link" data-section="tentang">Tentang Desa</a></li>
-        <li><a href="#sejarah" class="nav-link" data-section="sejarah">Sejarah</a></li>
-        <li><a href="#profil" class="nav-link" data-section="profil">Profil</a></li>
-        <li><a href="#potensi" class="nav-link" data-section="potensi">Potensi Desa</a></li>
-        <li><a href="#wisata" class="nav-link" data-section="wisata">Wisata</a></li>
-        <li><a href="#umkm" class="nav-link" data-section="umkm">UMKM</a></li>
-        <li><a href="#galeri" class="nav-link" data-section="galeri">Galeri</a></li>
-        <li><a href="#berita" class="nav-link" data-section="berita">Berita</a></li>
-        <li><a href="#peta" class="nav-link" data-section="peta">Peta</a></li>
+        
+        <li class="dropdown-parent">
+          <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" onclick="return false;">Profil Desa <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#tentang" class="dropdown-item nav-link" data-section="tentang">Tentang Desa</a></li>
+            <li><a href="#sejarah" class="dropdown-item nav-link" data-section="sejarah">Sejarah</a></li>
+            <li><a href="#profil" class="dropdown-item nav-link" data-section="profil">Profil Dusun</a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown-parent">
+          <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" onclick="return false;">Potensi &amp; UMKM <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#potensi" class="dropdown-item nav-link" data-section="potensi">Potensi Desa</a></li>
+            <li><a href="#umkm" class="dropdown-item nav-link" data-section="umkm">UMKM Lokal</a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown-parent">
+          <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" onclick="return false;">Informasi <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#galeri" class="dropdown-item nav-link" data-section="galeri">Galeri Foto</a></li>
+            <li><a href="#peta" class="dropdown-item nav-link" data-section="peta">Peta Lokasi</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
 
@@ -116,23 +134,18 @@
   <!-- ===================== HERO SECTION ===================== -->
   <section id="home" class="hero" aria-label="Hero">
     <div class="hero-bg">
-      <img src="https://picsum.photos/id/1015/1920/1080" alt="Pemandangan alam Dusun Klumutan" loading="eager">
+      <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&amp;fit=crop&amp;w=1920&amp;q=80" alt="Pemandangan alam pertanian Dusun Klumutan" loading="eager">
       <div class="hero-overlay"></div>
     </div>
 
     <div class="hero-content container">
-      <p class="hero-eyebrow reveal-up">Selamat Datang di</p>
-      <h1 class="hero-title reveal-up">
-        Dusun <span class="text-accent">Klumutan</span>
-      </h1>
+      <p class="hero-eyebrow reveal-up">Selamat Datang di Portal Resmi</p>
+      <h1 class="hero-title reveal-up">Dusun <span class="text-accent">Klumutan</span></h1>
       <p class="hero-slogan reveal-up" id="typing-text" aria-live="polite"></p>
-      <p class="hero-desc reveal-up">
-        Lorem ipsum dolor sit amet, dusun yang asri di lereng perbukitan Kalurahan Srikayangan,
-        Kapanewon Sentolo, Kabupaten Kulon Progo &mdash; menyimpan kearifan lokal, budaya, dan potensi alam yang terus kami kembangkan.
-      </p>
+      <p class="hero-desc reveal-up">Dusun yang asri di lereng perbukitan subur Kalurahan Srikayangan, Kapanewon Sentolo, Kabupaten Kulon Progo. Kami bangga melestarikan kearifan lokal, budaya gotong royong, dan potensi agraris bawang merah unggulan daerah.</p>
       <div class="hero-buttons reveal-up">
-        <a href="#wisata" class="btn btn-primary">Jelajahi Desa <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="#profil" class="btn btn-secondary">Lihat Profil</a>
+        <a href="#umkm" class="btn btn-secondary">Dukung UMKM Lokal <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#profil" class="btn btn-primary">Lihat Profil Dusun</a>
       </div>
     </div>
 
@@ -147,36 +160,27 @@
     <div class="container">
       <div class="section-header reveal-up">
         <span class="section-tag">Tentang Kami</span>
-        <h2 class="section-title">Tentang Desa</h2>
-        <p class="section-subtitle">Mengenal lebih dekat Dusun Klumutan, masyarakatnya, dan arah pembangunannya.</p>
+        <h2 class="section-title">Selayang Pandang</h2>
+        <p class="section-subtitle">Mengenal lebih dekat Dusun Klumutan, kerukunan masyarakatnya, dan arah pembangunannya.</p>
       </div>
 
       <div class="about-grid">
         <div class="about-text reveal-up">
-          <h3>Selayang Pandang</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit. Dusun Klumutan merupakan salah satu dusun
-            di Kalurahan Srikayangan yang dikenal dengan keramahan warganya serta kekayaan tradisi lokal.
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, menjadikan dusun ini sebagai
-            bagian penting dari perkembangan wilayah Kapanewon Sentolo.
-          </p>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Masyarakat Klumutan hidup berdampingan dengan alam, menjaga warisan budaya,
-            sekaligus terus beradaptasi dengan perkembangan zaman.
-          </p>
+          <h3>Harmoni Alam &amp; Kebersamaan</h3>
+          <p>Dusun Klumutan terletak di jantung Kalurahan Srikayangan, sebuah wilayah yang masyhur di Kulon Progo sebagai sentra produksi pertanian bawang merah (*brambang*). Berkat karakteristik tanah yang subur dan pengairan terencana, sebagian besar masyarakat kami mendedikasikan hidupnya pada sektor pertanian hortikultura ini.</p>
+          <p>Namun, Klumutan bukan sekadar tentang hamparan sawah hijau. Gotong royong yang menjadi warisan leluhur senantiasa mewarnai kehidupan sehari-hari kami. Keharmonisan antarwarga, kelestarian tradisi seni, dan keterbukaan terhadap inovasi teknologi menjadi pondasi utama kami menuju masa depan dusun yang mandiri dan berkelanjutan.</p>
         </div>
 
         <div class="about-cards">
           <div class="card about-card reveal-up">
             <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
-            <h4>Visi</h4>
-            <p>Lorem ipsum dolor sit amet, terwujudnya masyarakat Dusun Klumutan yang mandiri, sejahtera, dan berbudaya menuju desa unggulan tahun 2030.</p>
+            <h4>Visi Kami</h4>
+            <p>Terwujudnya Dusun Klumutan sebagai kawasan agrowisata mandiri berbasis pertanian modern yang lestari, berdaya saing tinggi, dan berakar kuat pada nilai luhur budaya gotong royong warga.</p>
           </div>
           <div class="card about-card reveal-up">
             <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
-            <h4>Misi</h4>
-            <p>Consectetur adipiscing elit, meningkatkan kualitas SDM, mengoptimalkan potensi alam dan UMKM, serta melestarikan budaya dan gotong royong warga.</p>
+            <h4>Misi Kami</h4>
+            <p>Meningkatkan produktivitas hortikultura bawang merah secara berkelanjutan, membina kelompok UMKM olahan hasil bumi lokal, mengoptimalkan sarana edukasi pertanian, serta melestarikan adat istiadat dusun.</p>
           </div>
         </div>
       </div>
@@ -187,9 +191,9 @@
   <section id="sejarah" class="section section-alt" aria-label="Sejarah Desa">
     <div class="container">
       <div class="section-header reveal-up">
-        <span class="section-tag">Jejak Masa Lalu</span>
+        <span class="section-tag">Jejak Langkah</span>
         <h2 class="section-title">Sejarah Dusun Klumutan</h2>
-        <p class="section-subtitle">Perjalanan panjang dusun dari masa ke masa.</p>
+        <p class="section-subtitle">Perjalanan panjang pembangunan dusun dari masa ke masa menuju peradaban yang berdaya.</p>
       </div>
 
       <div class="timeline">
@@ -197,40 +201,40 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-year">1945</span>
-            <h4>Awal Mula Pemukiman</h4>
-            <p>Lorem ipsum dolor sit amet, cikal bakal pemukiman di wilayah Klumutan mulai dibentuk oleh para pendatang dan tokoh masyarakat setempat.</p>
+            <h4>Perintisan Wilayah Pemukiman</h4>
+            <p>Awal mula terbentuknya kantong-kantong pemukiman warga di wilayah lereng bukit Klumutan, dipelopori oleh para pemuka masyarakat yang mulai membuka lahan untuk pertanian padi dan perkebunan tadah hujan.</p>
           </div>
         </div>
         <div class="timeline-item reveal-up">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-year">1965</span>
-            <h4>Pembentukan Struktur Dusun</h4>
-            <p>Consectetur adipiscing elit, struktur pemerintahan dusun mulai terbentuk secara resmi dengan penetapan batas wilayah administratif.</p>
+            <h4>Pengesahan Batas Administratif</h4>
+            <p>Pemerintah daerah meresmikan pembagian administratif wilayah dusun. Batas wilayah Dusun Klumutan ditetapkan secara tertulis di dalam peta Kalurahan Srikayangan guna ketertiban tata pamong dan pelayanan penduduk.</p>
           </div>
         </div>
         <div class="timeline-item reveal-up">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-year">1998</span>
-            <h4>Era Pembangunan Infrastruktur</h4>
-            <p>Sed do eiusmod tempor, pembangunan jalan dan fasilitas umum mulai digalakkan untuk meningkatkan akses dan konektivitas warga.</p>
+            <h4>Pembangunan Jaringan &amp; Irigasi Bulak</h4>
+            <p>Dusun memasuki babak elektrifikasi penuh. Di saat yang sama, dimulainya modernisasi sistem pengairan air tanah dalam (sumur bor renteng) untuk mengairi lahan bulak pertanian, memicu transisi ke penanaman bawang merah intensif.</p>
           </div>
         </div>
         <div class="timeline-item reveal-up">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-year">2015</span>
-            <h4>Pengembangan Potensi Wisata</h4>
-            <p>Ut labore et dolore magna, masyarakat mulai mengembangkan potensi wisata alam dan budaya sebagai sumber pendapatan baru.</p>
+            <h4>Pramuka Agrowisata &amp; Embung Desa</h4>
+            <p>Peluncuran gerakan sadar wisata agrobisnis. Melalui swadaya masyarakat dan pendampingan akademisi KKN, diinisiasi wadah kebun edukasi hortikultura terpadu serta pemanfaatan embung desa sebagai penampung air sekaligus destinasi rekreasi.</p>
           </div>
         </div>
         <div class="timeline-item reveal-up">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="timeline-year">2024</span>
-            <h4>Digitalisasi Desa</h4>
-            <p>Aliqua ut enim ad minim veniam, Dusun Klumutan memasuki era digital dengan hadirnya portal informasi resmi ini.</p>
+            <span class="timeline-year">2026</span>
+            <h4>Transformasi Digital Layanan Dusun</h4>
+            <p>Dusun Klumutan melangkah ke era keterbukaan informasi publik dengan mengadopsi portal profil digital ini, mendokumentasikan potensi UMKM lokal, agrowisata bulak, dan mempermudah komunikasi pemuda-pemudi KKN serta wisatawan.</p>
           </div>
         </div>
       </div>
@@ -243,49 +247,49 @@
       <div class="section-header reveal-up">
         <span class="section-tag">Data &amp; Fakta</span>
         <h2 class="section-title">Profil Dusun</h2>
-        <p class="section-subtitle">Gambaran umum data administratif dan demografis Dusun Klumutan.</p>
+        <p class="section-subtitle">Gambaran umum data demografis dan administratif resmi wilayah Dusun Klumutan.</p>
       </div>
 
       <div class="profile-grid">
         <div class="profile-card reveal-up">
-          <i class="fa-solid fa-map"></i>
+          <i class="fa-solid fa-map-location-dot"></i>
           <h4>Luas Wilayah</h4>
-          <p>120,5 Ha <span>(placeholder)</span></p>
+          <p>120,5 Hektar <span>Pertanian &amp; Pemukiman</span></p>
         </div>
         <div class="profile-card reveal-up">
           <i class="fa-solid fa-users"></i>
           <h4>Jumlah Penduduk</h4>
-          <p>1.245 Jiwa <span>(placeholder)</span></p>
+          <p>1.245 Jiwa <span>Laki-laki &amp; Perempuan</span></p>
         </div>
         <div class="profile-card reveal-up">
-          <i class="fa-solid fa-house"></i>
+          <i class="fa-solid fa-people-roof"></i>
           <h4>Jumlah KK</h4>
-          <p>356 KK <span>(placeholder)</span></p>
+          <p>356 Keluarga <span>Terdaftar Resmi</span></p>
         </div>
         <div class="profile-card reveal-up">
-          <i class="fa-solid fa-briefcase"></i>
+          <i class="fa-solid fa-seedling"></i>
           <h4>Mata Pencaharian</h4>
-          <p>Petani, Pedagang, Buruh <span>(placeholder)</span></p>
+          <p>Petani Hortikultura <span>Bawang Merah &amp; Padi</span></p>
         </div>
         <div class="profile-card reveal-up">
           <i class="fa-solid fa-graduation-cap"></i>
           <h4>Tingkat Pendidikan</h4>
-          <p>SD-Perguruan Tinggi <span>(placeholder)</span></p>
+          <p>SD hingga Sarjana <span>Didominasi Lulusan SMA</span></p>
         </div>
         <div class="profile-card reveal-up">
-          <i class="fa-solid fa-place-of-worship"></i>
-          <h4>Agama</h4>
-          <p>Islam, Kristen, Katolik <span>(placeholder)</span></p>
+          <i class="fa-solid fa-hands-praying"></i>
+          <h4>Agama &amp; Keyakinan</h4>
+          <p>Islam &amp; Kristen <span>Toleransi Terjaga Erat</span></p>
         </div>
         <div class="profile-card reveal-up">
           <i class="fa-solid fa-sitemap"></i>
           <h4>Pembagian Wilayah</h4>
-          <p>4 RT, 2 RW <span>(placeholder)</span></p>
+          <p>4 RT &amp; 2 RW <span>Rukun Tetangga &amp; Warga</span></p>
         </div>
         <div class="profile-card reveal-up">
-          <i class="fa-solid fa-draw-polygon"></i>
+          <i class="fa-solid fa-compass"></i>
           <h4>Batas Wilayah</h4>
-          <p>Utara, Selatan, Timur, Barat <span>(placeholder)</span></p>
+          <p>Bulak Srikayangan <span>Utara, Selatan, Timur, Barat</span></p>
         </div>
       </div>
     </div>
@@ -298,32 +302,32 @@
         <div class="stat-item reveal-up">
           <i class="fa-solid fa-users"></i>
           <span class="stat-number" data-target="1245">0</span>
-          <p>Penduduk</p>
+          <p>Total Penduduk</p>
         </div>
         <div class="stat-item reveal-up">
-          <i class="fa-solid fa-house-chimney"></i>
+          <i class="fa-solid fa-house-user"></i>
           <span class="stat-number" data-target="356">0</span>
           <p>Kepala Keluarga</p>
         </div>
         <div class="stat-item reveal-up">
-          <i class="fa-solid fa-vector-square"></i>
+          <i class="fa-solid fa-mountain-sun"></i>
           <span class="stat-number" data-target="120">0</span>
           <p>Hektar Wilayah</p>
         </div>
         <div class="stat-item reveal-up">
           <i class="fa-solid fa-school"></i>
-          <span class="stat-number" data-target="3">0</span>
-          <p>Sekolah</p>
+          <span class="stat-number" data-target="2">0</span>
+          <p>Sarana PAUD/KB</p>
         </div>
         <div class="stat-item reveal-up">
           <i class="fa-solid fa-mosque"></i>
-          <span class="stat-number" data-target="5">0</span>
-          <p>Masjid</p>
+          <span class="stat-number" data-target="6">0</span>
+          <p>Tempat Ibadah</p>
         </div>
         <div class="stat-item reveal-up">
-          <i class="fa-solid fa-shop"></i>
-          <span class="stat-number" data-target="42">0</span>
-          <p>UMKM</p>
+          <i class="fa-solid fa-store"></i>
+          <span class="stat-number" data-target="12">0</span>
+          <p>Kelompok UMKM</p>
         </div>
       </div>
     </div>
@@ -333,139 +337,97 @@
   <section id="potensi" class="section" aria-label="Potensi Desa">
     <div class="container">
       <div class="section-header reveal-up">
-        <span class="section-tag">Unggulan Kami</span>
-        <h2 class="section-title">Potensi Desa</h2>
-        <p class="section-subtitle">Beragam sektor unggulan yang menjadi kekuatan Dusun Klumutan.</p>
+        <span class="section-tag">Kekuatan Lokal</span>
+        <h2 class="section-title">Potensi Dusun</h2>
+        <p class="section-subtitle">Beragam sektor unggulan yang menjadi motor penggerak perekonomian dan kemandirian warga Klumutan.</p>
       </div>
 
       <div class="potential-grid">
         <div class="potential-card reveal-up">
           <div class="potential-icon"><i class="fa-solid fa-wheat-awn"></i></div>
-          <h4>Pertanian</h4>
-          <p>Lorem ipsum dolor sit amet, lahan pertanian padi dan palawija menjadi tumpuan ekonomi sebagian warga.</p>
+          <h4>Pertanian Bawang Merah</h4>
+          <p>Budidaya bawang merah varietas Srikayang dan Tajuk di Bulak Srikayangan dengan teknik pengairan sumur dalam yang produktif.</p>
         </div>
         <div class="potential-card reveal-up">
-          <div class="potential-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-          <h4>Wisata</h4>
-          <p>Consectetur adipiscing elit, potensi wisata alam dan edukasi yang mulai dikembangkan secara swadaya.</p>
+          <div class="potential-icon"><i class="fa-solid fa-map"></i></div>
+          <h4>Agrowisata Edukatif</h4>
+          <p>Edukasi bercocok tanam hortikultura bagi rombongan anak sekolah, dipadukan dengan pemandangan embung desa yang asri di sore hari.</p>
         </div>
         <div class="potential-card reveal-up">
           <div class="potential-icon"><i class="fa-solid fa-store"></i></div>
-          <h4>UMKM</h4>
-          <p>Sed do eiusmod tempor, pelaku usaha mikro kecil menengah yang menghasilkan produk khas dusun.</p>
+          <h4>UMKM Kuliner &amp; Kerajinan</h4>
+          <p>Produksi bawang goreng gurih aneka rasa, pasta bawang merah, dan aneka kerajinan serat alam buatan kelompok ibu-ibu PKK.</p>
         </div>
         <div class="potential-card reveal-up">
           <div class="potential-icon"><i class="fa-solid fa-cow"></i></div>
-          <h4>Peternakan</h4>
-          <p>Incididunt ut labore, peternakan kambing dan unggas sebagai sumber penghasilan tambahan warga.</p>
+          <h4>Peternakan Terintegrasi</h4>
+          <p>Peternakan kambing PE (Peranakan Etawa) dan domba potong skala kelompok warga yang kotorannya diolah kembali menjadi pupuk organik sawah.</p>
         </div>
         <div class="potential-card reveal-up">
           <div class="potential-icon"><i class="fa-solid fa-masks-theater"></i></div>
-          <h4>Budaya</h4>
-          <p>Et dolore magna aliqua, tradisi dan kesenian lokal yang masih dilestarikan hingga kini.</p>
+          <h4>Kesenian &amp; Budaya Jawa</h4>
+          <p>Kelompok seni Karawitan (Gamelan), tari Jathilan Klasik, serta upacara adat Merti Dusun yang rutin digelar tahunan seusai panen raya.</p>
         </div>
         <div class="potential-card reveal-up">
-          <div class="potential-icon"><i class="fa-solid fa-book-open-reader"></i></div>
-          <h4>Pendidikan</h4>
-          <p>Ut enim ad minim veniam, fasilitas pendidikan formal dan non-formal yang terus dikembangkan.</p>
+          <div class="potential-icon"><i class="fa-solid fa-school"></i></div>
+          <h4>Sarana Pendidikan Usia Dini</h4>
+          <p>Kehadiran KB Srikandi di bawah pembinaan dusun untuk memastikan anak-anak usia dini mendapatkan pendidikan moral dan karakter awal.</p>
         </div>
         <div class="potential-card reveal-up">
           <div class="potential-icon"><i class="fa-solid fa-palette"></i></div>
-          <h4>Ekonomi Kreatif</h4>
-          <p>Quis nostrud exercitation, kerajinan tangan dan produk kreatif sebagai nilai tambah ekonomi warga.</p>
+          <h4>Kerajinan Anyaman Serat</h4>
+          <p>Pemanfaatan eceng gondok, bambu, dan pelepah pisang menjadi dekorasi rumah tangga bernilai seni estetis tinggi untuk pasar lokal.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== TOURISM SECTION ===================== -->
-  <section id="wisata" class="section section-alt" aria-label="Wisata Desa">
-    <div class="container">
-      <div class="section-header reveal-up">
-        <span class="section-tag">Destinasi</span>
-        <h2 class="section-title">Wisata Dusun Klumutan</h2>
-        <p class="section-subtitle">Tempat-tempat menarik yang dapat Anda kunjungi di sekitar dusun.</p>
-      </div>
 
-      <div class="tourism-grid">
-        <div class="tourism-card reveal-up">
-          <div class="tourism-img">
-            <img src="https://picsum.photos/id/1018/600/400" alt="Wisata Bukit Klumutan (placeholder)" loading="lazy">
-          </div>
-          <div class="tourism-body">
-            <h4>Bukit Klumutan Indah</h4>
-            <p>Lorem ipsum dolor sit amet, spot wisata alam dengan pemandangan perbukitan yang asri (placeholder).</p>
-            <a href="#" class="btn-detail">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="tourism-card reveal-up">
-          <div class="tourism-img">
-            <img src="https://picsum.photos/id/1043/600/400" alt="Wisata Embung Klumutan (placeholder)" loading="lazy">
-          </div>
-          <div class="tourism-body">
-            <h4>Embung Tirta Klumutan</h4>
-            <p>Consectetur adipiscing elit, embung yang dimanfaatkan sebagai sarana irigasi dan wisata air (placeholder).</p>
-            <a href="#" class="btn-detail">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="tourism-card reveal-up">
-          <div class="tourism-img">
-            <img src="https://picsum.photos/id/1039/600/400" alt="Wisata Kebun Klumutan (placeholder)" loading="lazy">
-          </div>
-          <div class="tourism-body">
-            <h4>Kebun Edukasi Klumutan</h4>
-            <p>Sed do eiusmod tempor, kebun edukasi pertanian yang terbuka untuk kunjungan pelajar (placeholder).</p>
-            <a href="#" class="btn-detail">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ===================== UMKM SECTION ===================== -->
   <section id="umkm" class="section" aria-label="UMKM Desa">
     <div class="container">
       <div class="section-header reveal-up">
-        <span class="section-tag">Produk Lokal</span>
+        <span class="section-tag">Karya Lokal</span>
         <h2 class="section-title">UMKM Dusun Klumutan</h2>
-        <p class="section-subtitle">Mendukung pelaku usaha mikro kecil menengah di dusun kami.</p>
+        <p class="section-subtitle">Dukung pertumbuhan pelaku usaha mikro, kecil, dan menengah asli warga dusun kami.</p>
       </div>
 
       <div class="umkm-grid">
         <div class="umkm-card reveal-up">
-          <img src="https://picsum.photos/id/292/600/400" alt="Produk UMKM Keripik Klumutan (placeholder)" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1608797178974-15b35a61d121?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Bawang Goreng Srikayang" loading="lazy">
           <div class="umkm-body">
-            <span class="umkm-category">Makanan</span>
-            <h4>Keripik Singkong Klumutan</h4>
-            <p>Lorem ipsum dolor sit amet, produk keripik singkong khas dusun dengan berbagai varian rasa (placeholder).</p>
-            <p class="umkm-contact"><i class="fa-solid fa-phone"></i> 0812-xxxx-xxxx</p>
+            <span class="umkm-category">Kuliner Olahan</span>
+            <h4>Bawang Goreng Srikayang</h4>
+            <p>Bawang merah goreng renyah bebas bahan pengawet kimia. Terbuat asli dari varietas Srikayang lokal yang harum, gurih, dan minim minyak.</p>
+            <p class="umkm-contact"><i class="fa-brands fa-whatsapp"></i> 0812-3456-7890</p>
           </div>
         </div>
         <div class="umkm-card reveal-up">
-          <img src="https://picsum.photos/id/365/600/400" alt="Produk UMKM Anyaman Klumutan (placeholder)" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Anyaman Bambu Srikandi" loading="lazy">
           <div class="umkm-body">
-            <span class="umkm-category">Kerajinan</span>
-            <h4>Anyaman Bambu Klumutan</h4>
-            <p>Consectetur adipiscing elit, kerajinan anyaman bambu hasil tangan terampil warga dusun (placeholder).</p>
-            <p class="umkm-contact"><i class="fa-solid fa-phone"></i> 0813-xxxx-xxxx</p>
+            <span class="umkm-category">Kerajinan Tangan</span>
+            <h4>Anyaman Bambu Srikandi</h4>
+            <p>Aneka wadah hiasan, besek makanan ramah lingkungan, tudung saji, dan keranjang belanja yang dianyam secara manual menggunakan bambu tali pilihan.</p>
+            <p class="umkm-contact"><i class="fa-brands fa-whatsapp"></i> 0813-9876-5432</p>
           </div>
         </div>
         <div class="umkm-card reveal-up">
-          <img src="https://picsum.photos/id/431/600/400" alt="Produk UMKM Kopi Klumutan (placeholder)" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Kopi Robusta Sentolo" loading="lazy">
           <div class="umkm-body">
-            <span class="umkm-category">Minuman</span>
-            <h4>Kopi Robusta Klumutan</h4>
-            <p>Sed do eiusmod tempor, kopi robusta lokal hasil olahan petani kopi dusun (placeholder).</p>
-            <p class="umkm-contact"><i class="fa-solid fa-phone"></i> 0814-xxxx-xxxx</p>
+            <span class="umkm-category">Minuman Khas</span>
+            <h4>Kopi Robusta Sentolo</h4>
+            <p>Biji kopi robusta hasil kebun warga yang diproses sangrai tradisional menggunakan tungku kayu, menciptakan aroma kopi pedesaan yang khas dan pekat.</p>
+            <p class="umkm-contact"><i class="fa-brands fa-whatsapp"></i> 0814-5678-1234</p>
           </div>
         </div>
         <div class="umkm-card reveal-up">
-          <img src="https://picsum.photos/id/488/600/400" alt="Produk UMKM Batik Klumutan (placeholder)" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Batik Tulis Srikayangan" loading="lazy">
           <div class="umkm-body">
-            <span class="umkm-category">Tekstil</span>
-            <h4>Batik Tulis Klumutan</h4>
-            <p>Incididunt ut labore et dolore, batik tulis dengan motif khas yang menggambarkan budaya lokal (placeholder).</p>
-            <p class="umkm-contact"><i class="fa-solid fa-phone"></i> 0815-xxxx-xxxx</p>
+            <span class="umkm-category">Kain &amp; Tekstil</span>
+            <h4>Batik Tulis Srikayangan</h4>
+            <p>Kain batik tulis bermotif ornamen dedaunan serta bawang merah khas Srikayangan, dibuat dengan ketekunan jemari ibu-ibu PKK Dusun Klumutan.</p>
+            <p class="umkm-contact"><i class="fa-brands fa-whatsapp"></i> 0815-1234-5678</p>
           </div>
         </div>
       </div>
@@ -477,29 +439,29 @@
     <div class="container">
       <div class="section-header reveal-up">
         <span class="section-tag">Pemerintahan</span>
-        <h2 class="section-title">Struktur Organisasi</h2>
-        <p class="section-subtitle">Jajaran pengurus Dusun Klumutan periode saat ini.</p>
+        <h2 class="section-title">Struktur Pamong Dusun</h2>
+        <p class="section-subtitle">Jajaran pengurus administrasi dan perwakilan warga Dusun Klumutan yang siap melayani.</p>
       </div>
 
       <div class="org-grid">
         <div class="org-card reveal-up">
-          <img src="https://picsum.photos/id/64/300/300" alt="Foto Kepala Dusun (placeholder)" loading="lazy">
-          <h4>Nama Placeholder</h4>
-          <p>Kepala Dusun</p>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=300&amp;h=300&amp;q=80" alt="Foto Sunardi, S.IP. - Kepala Dusun" loading="lazy">
+          <h4>Sunardi, S.IP.</h4>
+          <p>Kepala Dusun (Dukuh)</p>
         </div>
         <div class="org-card reveal-up">
-          <img src="https://picsum.photos/id/91/300/300" alt="Foto Sekretaris Dusun (placeholder)" loading="lazy">
-          <h4>Nama Placeholder</h4>
-          <p>Sekretaris</p>
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=300&amp;h=300&amp;q=80" alt="Foto Siti Handayani - Sekretaris Dusun" loading="lazy">
+          <h4>Siti Handayani</h4>
+          <p>Sekretaris Dusun</p>
         </div>
         <div class="org-card reveal-up">
-          <img src="https://picsum.photos/id/177/300/300" alt="Foto Bendahara Dusun (placeholder)" loading="lazy">
-          <h4>Nama Placeholder</h4>
-          <p>Bendahara</p>
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=300&amp;h=300&amp;q=80" alt="Foto Budi Santoso - Bendahara Dusun" loading="lazy">
+          <h4>Budi Santoso</h4>
+          <p>Bendahara Dusun</p>
         </div>
         <div class="org-card reveal-up">
-          <img src="https://picsum.photos/id/203/300/300" alt="Foto Ketua RT (placeholder)" loading="lazy">
-          <h4>Nama Placeholder</h4>
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&amp;fit=crop&amp;w=300&amp;h=300&amp;q=80" alt="Foto Rian Hidayat - Ketua RT 01" loading="lazy">
+          <h4>Rian Hidayat</h4>
           <p>Ketua RT 01</p>
         </div>
       </div>
@@ -512,33 +474,33 @@
       <div class="section-header reveal-up">
         <span class="section-tag">Dokumentasi</span>
         <h2 class="section-title">Galeri Dusun</h2>
-        <p class="section-subtitle">Momen dan keindahan Dusun Klumutan dalam bingkai foto.</p>
+        <p class="section-subtitle">Keindahan alam, produktivitas pertanian bawang merah, dan momen hangat warga dalam bingkai foto.</p>
       </div>
 
       <div class="gallery-grid" id="gallery-grid">
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1015/1000/1200">
-          <img src="https://picsum.photos/id/1015/500/600" alt="Galeri foto dusun 1 (placeholder)" loading="lazy">
+        <button class="gallery-item bento-large reveal-up" data-img="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Persawahan hijau pedesaan Dusun Klumutan" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1041/1000/700">
-          <img src="https://picsum.photos/id/1041/500/350" alt="Galeri foto dusun 2 (placeholder)" loading="lazy">
+        <button class="gallery-item reveal-up" data-img="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Bawang merah kualitas unggul dari panen raya" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1024/1000/1300">
-          <img src="https://picsum.photos/id/1024/500/650" alt="Galeri foto dusun 3 (placeholder)" loading="lazy">
+        <button class="gallery-item reveal-up" data-img="https://images.unsplash.com/photo-1596422846543-75c6fc18a52b?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1596422846543-75c6fc18a52b?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Senyuman hangat warga Dusun Klumutan" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1035/1000/700">
-          <img src="https://picsum.photos/id/1035/500/350" alt="Galeri foto dusun 4 (placeholder)" loading="lazy">
+        <button class="gallery-item bento-wide reveal-up" data-img="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pemandangan perbukitan asri di sekitar Kulon Progo" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1059/1000/1300">
-          <img src="https://picsum.photos/id/1059/500/650" alt="Galeri foto dusun 5 (placeholder)" loading="lazy">
+        <button class="gallery-item bento-wide reveal-up" data-img="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Warga bahu-membahu gotong royong membersihkan saluran air" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1062/1000/700">
-          <img src="https://picsum.photos/id/1062/500/350" alt="Galeri foto dusun 6 (placeholder)" loading="lazy">
+        <button class="gallery-item reveal-up" data-img="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Proses canting kain batik tulis bermotif lokal" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1074/1000/1300">
-          <img src="https://picsum.photos/id/1074/500/650" alt="Galeri foto dusun 7 (placeholder)" loading="lazy">
+        <button class="gallery-item reveal-up" data-img="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="Pentas seni budaya tari tradisional di pendopo" loading="lazy">
         </button>
-        <button class="gallery-item reveal-up" data-img="https://picsum.photos/id/1080/1000/700">
-          <img src="https://picsum.photos/id/1080/500/350" alt="Galeri foto dusun 8 (placeholder)" loading="lazy">
+        <button class="gallery-item bento-full reveal-up" data-img="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=1600&amp;q=80">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Keindahan embung pedesaan di bawah sinar matahari senja" loading="lazy">
         </button>
       </div>
     </div>
@@ -552,139 +514,9 @@
     <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Foto selanjutnya"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 
-  <!-- ===================== NEWS SECTION ===================== -->
-  <section id="berita" class="section section-alt" aria-label="Berita Desa">
-    <div class="container">
-      <div class="section-header reveal-up">
-        <span class="section-tag">Update Terbaru</span>
-        <h2 class="section-title">Berita &amp; Kegiatan</h2>
-        <p class="section-subtitle">Informasi terbaru seputar kegiatan dan perkembangan dusun.</p>
-      </div>
 
-      <div class="news-grid">
-        <article class="news-card reveal-up">
-          <div class="news-thumb">
-            <img src="https://picsum.photos/id/180/600/400" alt="Kegiatan kerja bakti warga (placeholder)" loading="lazy">
-            <span class="news-category">Kegiatan</span>
-          </div>
-          <div class="news-body">
-            <span class="news-date"><i class="fa-regular fa-calendar"></i> 12 Mei 2026</span>
-            <h4>Kerja Bakti Bersih Dusun Digelar Serentak</h4>
-            <p>Lorem ipsum dolor sit amet, warga dusun bergotong royong membersihkan lingkungan sekitar (placeholder).</p>
-            <a href="#" class="btn-detail">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </article>
-        <article class="news-card reveal-up">
-          <div class="news-thumb">
-            <img src="https://picsum.photos/id/195/600/400" alt="Pelatihan UMKM warga (placeholder)" loading="lazy">
-            <span class="news-category">UMKM</span>
-          </div>
-          <div class="news-body">
-            <span class="news-date"><i class="fa-regular fa-calendar"></i> 28 April 2026</span>
-            <h4>Pelatihan Digital Marketing untuk Pelaku UMKM</h4>
-            <p>Consectetur adipiscing elit, pelatihan diadakan untuk meningkatkan kapasitas digital UMKM lokal (placeholder).</p>
-            <a href="#" class="btn-detail">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </article>
-        <article class="news-card reveal-up">
-          <div class="news-thumb">
-            <img src="https://picsum.photos/id/247/600/400" alt="Festival budaya dusun (placeholder)" loading="lazy">
-            <span class="news-category">Budaya</span>
-          </div>
-          <div class="news-body">
-            <span class="news-date"><i class="fa-regular fa-calendar"></i> 15 April 2026</span>
-            <h4>Festival Budaya Klumutan Sukses Digelar</h4>
-            <p>Sed do eiusmod tempor incididunt, festival budaya menampilkan kesenian tradisional dusun (placeholder).</p>
-            <a href="#" class="btn-detail">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===================== EVENTS SECTION ===================== -->
-  <section class="section" aria-label="Agenda Kegiatan">
-    <div class="container">
-      <div class="section-header reveal-up">
-        <span class="section-tag">Agenda</span>
-        <h2 class="section-title">Agenda Kegiatan Desa</h2>
-        <p class="section-subtitle">Jadwal kegiatan dan acara mendatang di Dusun Klumutan.</p>
-      </div>
 
-      <div class="events-list">
-        <div class="event-item reveal-up">
-          <div class="event-date"><span>17</span><small>Jul</small></div>
-          <div class="event-info">
-            <h4>Peringatan Hari Jadi Dusun</h4>
-            <p>Lorem ipsum dolor sit amet, acara peringatan hari jadi dusun dengan berbagai lomba dan pentas seni (placeholder).</p>
-          </div>
-        </div>
-        <div class="event-item reveal-up">
-          <div class="event-date"><span>05</span><small>Ags</small></div>
-          <div class="event-info">
-            <h4>Pasar Malam UMKM</h4>
-            <p>Consectetur adipiscing elit, pameran dan bazar produk UMKM lokal dusun (placeholder).</p>
-          </div>
-        </div>
-        <div class="event-item reveal-up">
-          <div class="event-date"><span>21</span><small>Ags</small></div>
-          <div class="event-info">
-            <h4>Gotong Royong Bersama</h4>
-            <p>Sed do eiusmod tempor, kegiatan gotong royong rutin membersihkan fasilitas umum dusun (placeholder).</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== TESTIMONIALS SECTION ===================== -->
-  <section class="section section-alt testimonial-section" aria-label="Testimoni">
-    <div class="container">
-      <div class="section-header reveal-up">
-        <span class="section-tag">Kata Mereka</span>
-        <h2 class="section-title">Testimoni Pengunjung &amp; Warga</h2>
-      </div>
-
-      <div class="testimonial-slider" id="testimonial-slider">
-        <div class="testimonial-track" id="testimonial-track">
-          <div class="testimonial-card">
-            <i class="fa-solid fa-quote-left quote-icon"></i>
-            <p>"Lorem ipsum dolor sit amet, suasana dusun yang tenang dan warganya sangat ramah membuat saya betah berkunjung (placeholder)."</p>
-            <div class="testimonial-author">
-              <img src="https://picsum.photos/id/338/100/100" alt="Foto pengunjung (placeholder)" loading="lazy">
-              <div>
-                <strong>Nama Placeholder</strong>
-                <span>Wisatawan</span>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <i class="fa-solid fa-quote-left quote-icon"></i>
-            <p>"Consectetur adipiscing elit, produk UMKM dusun ini berkualitas dan layak dipromosikan lebih luas (placeholder)."</p>
-            <div class="testimonial-author">
-              <img src="https://picsum.photos/id/342/100/100" alt="Foto warga (placeholder)" loading="lazy">
-              <div>
-                <strong>Nama Placeholder</strong>
-                <span>Warga Dusun</span>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <i class="fa-solid fa-quote-left quote-icon"></i>
-            <p>"Sed do eiusmod tempor incididunt, pengelolaan desa yang transparan dan informatif lewat portal ini (placeholder)."</p>
-            <div class="testimonial-author">
-              <img src="https://picsum.photos/id/349/100/100" alt="Foto mahasiswa KKN (placeholder)" loading="lazy">
-              <div>
-                <strong>Nama Placeholder</strong>
-                <span>Mahasiswa KKN</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-dots" id="testimonial-dots"></div>
-      </div>
-    </div>
-  </section>
 
   <!-- ===================== FAQ SECTION ===================== -->
   <section class="section" aria-label="FAQ">
@@ -692,7 +524,7 @@
       <div class="section-header reveal-up">
         <span class="section-tag">Bantuan</span>
         <h2 class="section-title">Pertanyaan Umum</h2>
-        <p class="section-subtitle">Beberapa pertanyaan yang sering diajukan mengenai Dusun Klumutan.</p>
+        <p class="section-subtitle">Beberapa pertanyaan yang sering diajukan mengenai wisata dan kehidupan di Dusun Klumutan.</p>
       </div>
 
       <div class="faq-list">
@@ -702,34 +534,34 @@
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, Dusun Klumutan dapat dijangkau melalui jalan utama Kapanewon Sentolo dengan kendaraan pribadi maupun umum (placeholder).</p>
+            <p>Dusun Klumutan berjarak sekitar 30 kilometer dari Kota Yogyakarta. Rute termudah adalah mengikuti Jalan Raya Jogja-Wates menuju Kapanewon Sentolo, kemudian berkendara ke arah utara menuju wilayah administrasi Kalurahan Srikayangan.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Apakah ada penginapan di sekitar dusun?</span>
+            <span>Apakah ada penginapan / homestay warga di sekitar dusun?</span>
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="faq-answer">
-            <p>Consectetur adipiscing elit, beberapa warga menyediakan homestay sederhana bagi wisatawan yang ingin menginap (placeholder).</p>
+            <p>Ya, untuk mendukung agrowisata setempat, beberapa warga mengelola rumah tinggal (homestay) sederhana dengan tarif bersahabat. Pengunjung bisa bermalam dan ikut merasakan rutinitas pagi petani hortikultura.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Bagaimana cara membeli produk UMKM dusun?</span>
+            <span>Bagaimana cara membeli produk UMKM bawang goreng dan kerajinan?</span>
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="faq-answer">
-            <p>Sed do eiusmod tempor, produk UMKM dapat dipesan melalui kontak yang tercantum pada masing-masing produk di halaman ini (placeholder).</p>
+            <p>Anda dapat memesan produk secara langsung dengan menghubungi nomor WhatsApp pengurus UMKM yang tertera pada bagian kartu informasi produk masing-masing di website ini.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Apakah pengunjung dikenakan biaya masuk?</span>
+            <span>Apakah ada biaya masuk untuk berfoto di Agrowisata Bulak?</span>
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="faq-answer">
-            <p>Incididunt ut labore et dolore, sebagian lokasi wisata bersifat swadaya dengan biaya sukarela untuk pemeliharaan (placeholder).</p>
+            <p>Tidak ada tiket masuk resmi untuk sekadar melihat-lihat sawah bulak bawang merah. Namun, jika Anda menginginkan paket pemandu pertanian edukasi terpadu untuk rombongan, silakan berkonsultasi dengan pengurus Karang Taruna.</p>
           </div>
         </div>
       </div>
@@ -741,32 +573,25 @@
     <div class="container">
       <div class="section-header reveal-up">
         <span class="section-tag">Lokasi</span>
-        <h2 class="section-title">Peta Dusun Klumutan</h2>
-        <p class="section-subtitle">Dk. Klumutan, Kal. Srikayangan, Kap. Sentolo, Kab. Kulon Progo, DIY.</p>
+        <h2 class="section-title">Peta Lokasi Dusun</h2>
+        <p class="section-subtitle">Dk. Klumutan, Kalurahan Srikayangan, Kapanewon Sentolo, Kabupaten Kulon Progo, D.I. Yogyakarta.</p>
       </div>
 
       <div class="map-wrapper reveal-up">
-        <iframe
-          src="https://www.google.com/maps?q=Srikayangan,+Sentolo,+Kulon+Progo&output=embed"
-          width="100%" height="450" style="border:0;" allowfullscreen=""
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Peta Lokasi Dusun Klumutan">
-        </iframe>
+        <div id="map-3d" style="width: 100%; height: 480px; position: relative;"></div>
       </div>
       <div class="map-cta">
-        <a href="https://maps.google.com/?q=Srikayangan,Sentolo,Kulon+Progo" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <i class="fa-solid fa-location-dot"></i> Lihat di Google Maps
+        <a href="https://maps.app.goo.gl/KvcZNVoN9yLctnQn6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <i class="fa-solid fa-location-dot"></i> Buka di Google Maps
         </a>
       </div>
     </div>
   </section>
 
-
-
 </main>
 
 <!-- ===================== FOOTER ===================== -->
-<footer class="footer">
+<footer class="footer" id="kontak">
   <div class="container footer-grid">
     <div class="footer-col footer-brand">
       <a href="#home" class="navbar-brand">
@@ -776,7 +601,7 @@
           <small>Srikayangan, Sentolo</small>
         </span>
       </a>
-      <p>Lorem ipsum dolor sit amet, portal resmi informasi Dusun Klumutan untuk warga dan pengunjung (placeholder).</p>
+      <p>Portal resmi informasi Dusun Klumutan, Srikayangan, Sentolo. Menyajikan data administratif dusun, potensi pertanian bawang merah, profil pamong, dan pelayanan informasi kegiatan warga.</p>
       <div class="footer-socials">
         <a href="#" aria-label="Instagram Dusun Klumutan"><i class="fa-brands fa-instagram"></i></a>
         <a href="#" aria-label="Facebook Dusun Klumutan"><i class="fa-brands fa-facebook"></i></a>
@@ -792,28 +617,26 @@
         <li><a href="#sejarah">Sejarah</a></li>
         <li><a href="#profil">Profil</a></li>
         <li><a href="#potensi">Potensi Desa</a></li>
-        <li><a href="#wisata">Wisata</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h4>Lainnya</h4>
+      <h4>Pintasan</h4>
       <ul>
-        <li><a href="#umkm">UMKM</a></li>
-        <li><a href="#galeri">Galeri</a></li>
-        <li><a href="#berita">Berita</a></li>
-        <li><a href="#peta">Peta</a></li>
+        <li><a href="#umkm">UMKM Lokal</a></li>
+        <li><a href="#galeri">Galeri Foto</a></li>
+        <li><a href="#peta">Peta Lokasi</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h4>Alamat</h4>
-      <p><i class="fa-solid fa-location-dot"></i> Dk. Klumutan, Kal. Srikayangan, Kap. Sentolo, Kab. Kulon Progo, Daerah Istimewa Yogyakarta</p>
+      <h4>Kontak Alamat</h4>
+      <p><i class="fa-solid fa-location-dot"></i> Dk. Klumutan, Kal. Srikayangan, Kap. Sentolo, Kab. Kulon Progo, Daerah Istimewa Yogyakarta 55662</p>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; <span id="current-year"></span> Pemerintah Dusun Klumutan. Seluruh hak cipta dilindungi.</p>
+    <p>© <span id="current-year"></span> Pemerintah Dusun Klumutan. Seluruh hak cipta dilindungi.</p>
   </div>
 
   <button id="back-to-top" class="back-to-top" aria-label="Kembali ke atas">
@@ -822,5 +645,6 @@
 </footer>
 
 <script src="js/script.js"></script>
-</body>
-</html>
+
+
+</body></html>
